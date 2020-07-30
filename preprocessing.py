@@ -6,6 +6,7 @@ from nltk.stem.porter import PorterStemmer
 
 import re
 import time
+import numpy as np
 
 from spellchecker import SpellChecker
 
