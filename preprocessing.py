@@ -1,7 +1,4 @@
 import nltk
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('punkt')
 
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -10,6 +7,7 @@ from nltk.stem.porter import PorterStemmer
 import re
 
 from spellchecker import SpellChecker
+
 
 def regex_filter(sentence):
     # fix missing delimiter - i.e deepDishPizza
@@ -62,8 +60,11 @@ def preprocess_words(text):
   return stem_words(word_list)
   
 def preprocess(reviews, samp_size=None):
+  nltk.download('stopwords')
+  nltk.download('averaged_perceptron_tagger')
+  nltk.download('punkt')
   if not samp_size:
-        samp_size = 1000
+    samp_size = 1000
 
   start = time.time()
   print('Stage 1: Preprocess raw review texts')
@@ -83,5 +84,3 @@ def preprocess(reviews, samp_size=None):
   print("Preprocessing {} reviews took {} minutes".format(len(indicies), str((end - start)/60)))
   return texts, token_lists, idx_in
 
-if __name__ == "__main__":
-    preprocess(sys.argv[1], sys.argv[2])
