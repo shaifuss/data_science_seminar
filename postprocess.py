@@ -20,13 +20,13 @@ def get_scores(model_dict, vocab):
                 elif word in vocab:
                     score += i + 1
             output_dict['scores'].append(score)
-        print 'method: {}, topic scores: {}'.format(method,
-                model_dict[method]['scores'])
-        print 'method: {}, coherence: {}'.format(method,
-                model_dict[method]['coherence'])
+        print('method: {}, topic scores: {}'.format(method,
+                model_dict[method]['scores']))
+        print('method: {}, coherence: {}'.format(method,
+                model_dict[method]['coherence']))
         if 'BERT' in method:
-            print 'method: {}, silhouette: {}'.format(method,
-                    model_dict[method]['silhouette'])
+            print('method: {}, silhouette: {}'.format(method,
+                    model_dict[method]['silhouette']))
     return model_dict
 
 
@@ -39,7 +39,7 @@ def visualize(model):
     if model.method == 'LDA':
         return
     reducer = umap.UMAP()
-    print 'Calculating UMAP projection ...'
+    print('Calculating UMAP projection ...')
     vec_umap = reducer.fit_transform(model.vec[model.method])
     plot_proj(vec_umap, model.cluster_model.labels_)
 
@@ -89,12 +89,12 @@ def get_coherence(model, token_lists, measure='c_v'):
                             corpus=model.corpus,
                             dictionary=model.dictionary,
                             coherence=measure)
-        print CoherenceModel.top_topics_as_word_lists(model=model.ldamodel,
-                dictionary=model.dictionary, topn=5)
+        print(CoherenceModel.top_topics_as_word_lists(model=model.ldamodel,
+                dictionary=model.dictionary, topn=5))
     else:
         topics = get_topic_words_hybrid(token_lists,
                 model.cluster_model.labels_)
-        print 'Topics are:\n{}'.format(topics)
+        print('Topics are:\n{}'.format(topics))
         cm = CoherenceModel(topics=topics, texts=token_lists,
                             corpus=model.corpus,
                             dictionary=model.dictionary,
