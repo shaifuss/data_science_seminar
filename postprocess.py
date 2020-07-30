@@ -6,6 +6,7 @@ import umap
 import matplotlib.pyplot as plt
 from gensim.models.coherencemodel import CoherenceModel
 import os
+import numpy as np
 
 
 def get_scores(model_dict, vocab):
