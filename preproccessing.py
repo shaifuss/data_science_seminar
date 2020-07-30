@@ -82,3 +82,6 @@ def preprocess(reviews, samp_size=None):
   end = time.time()
   print("Preprocessing {} reviews took {} minutes".format(len(indicies), str((end - start)/60)))
   return texts, token_lists, idx_in
+
+if __name__ == "__main__":
+    preprocess(sys.argv[1], sys.argv[2])
